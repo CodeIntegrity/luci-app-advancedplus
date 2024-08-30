@@ -316,90 +316,68 @@ end
 end
 end
 
-if nixio.fs.access("/etc/ddns-go/ddns-go-config.yaml")then
-s:tab("ddnsgoconf",translate("DDNS-GO"),translate("This page is about configuration")..translate("ddns-go-config.yaml")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("ddnsgoconf",Value,"ddnsgoconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
+if nixio.fs.access("/etc/sing-box/config.json")then
+s:tab("sing-boxconf",translate("Sing-Box"),translate("This page is about configuration")..translate("config.json")..translate("Document content. Automatic restart takes effect after saving the application"))
+conf=s:taboption("sing-boxconf",Value,"sing-boxconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
 conf.template="cbi/tvalue"
 conf.rows=20
 conf.wrap="off"
 conf.cfgvalue=function(t,t)
-return e.readfile("/etc/ddns-go/ddns-go-config.yaml")or""
+return e.readfile("/etc/sing-box/config.json")or""
 end
 conf.write=function(a,a,t)
 if t then
 t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/ddnsgo",t)
-if(luci.sys.call("cmp -s /tmp/ddns-go /etc/ddns-go/ddns-go-config.yaml")==1)then
-e.writefile("/etc/ddns-go/ddns-go-config.yaml",t)
+e.writefile("/tmp/sing-box",t)
+if(luci.sys.call("cmp -s /tmp/sing-box /etc/sing-box/config.json")==1)then
+e.writefile("/etc/sing-box/config.json",t)
 luci.sys.call("/etc/init.d/ddns-go restart >/dev/null")
 end
-e.remove("/tmp/ddnsgo")
+e.remove("/tmp/sing-box")
 end
 end
 end
 
-if nixio.fs.access("/etc/config/smartdns")then
-s:tab("smartdnsconf",translate("SMARTDNS"),translate("This page is about configuration")..translate("/etc/config/smartdns")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("smartdnsconf",Value,"smartdnsconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
+if nixio.fs.access("/etc/config/mosdns")then
+s:tab("mosdnsconf",translate("MosDNS"),translate("This page is about configuration")..translate("/etc/config/mosdns")..translate("Document content. Automatic restart takes effect after saving the application"))
+conf=s:taboption("mosdnsconf",Value,"mosdnsconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
 conf.template="cbi/tvalue"
 conf.rows=20
 conf.wrap="off"
 conf.cfgvalue=function(t,t)
-return e.readfile("/etc/config/smartdns")or""
+return e.readfile("/etc/config/mosdns")or""
 end
 conf.write=function(a,a,t)
 if t then
 t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/smartdns",t)
-if(luci.sys.call("cmp -s /tmp/smartdns /etc/config/smartdns")==1)then
-e.writefile("/etc/config/smartdns",t)
-luci.sys.call("/etc/init.d/smartdns restart >/dev/null")
+e.writefile("/tmp/mosdns",t)
+if(luci.sys.call("cmp -s /tmp/mosdns /etc/config/mosdns")==1)then
+e.writefile("/etc/config/mosdns",t)
+luci.sys.call("/etc/init.d/mosdns restart >/dev/null")
 end
-e.remove("/tmp/smartdns")
+e.remove("/tmp/mosdns")
 end
 end
 end
 
-if nixio.fs.access("/etc/config/bypass")then
-s:tab("bypassconf",translate("BYPASS"),translate("This page is about configuration")..translate("/etc/config/bypass")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("bypassconf",Value,"bypassconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
+if nixio.fs.access("/etc/config/mihomo")then
+s:tab("mihomoconf",translate("mihomo"),translate("This page is about configuration")..translate("/etc/config/mihomo")..translate("Document content. Automatic restart takes effect after saving the application"))
+conf=s:taboption("mihomoconf",Value,"mihomoconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
 conf.template="cbi/tvalue"
 conf.rows=20
 conf.wrap="off"
 conf.cfgvalue=function(t,t)
-return e.readfile("/etc/config/bypass")or""
+return e.readfile("/etc/config/mihomo")or""
 end
 conf.write=function(a,a,t)
 if t then
 t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/bypass",t)
-if(luci.sys.call("cmp -s /tmp/bypass /etc/config/bypass")==1)then
-e.writefile("/etc/config/bypass",t)
-luci.sys.call("/etc/init.d/bypass restart >/dev/null")
+e.writefile("/tmp/mihomo",t)
+if(luci.sys.call("cmp -s /tmp/mihomo /etc/config/mihomo")==1)then
+e.writefile("/etc/config/mihomo",t)
+luci.sys.call("/etc/init.d/mihomo restart >/dev/null")
 end
-e.remove("/tmp/bypass")
-end
-end
-end
-
-if nixio.fs.access("/etc/config/daed")then
-s:tab("daedconf",translate("daed"),translate("This page is about configuration")..translate("/etc/config/daed")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("daedconf",Value,"daedconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
-conf.template="cbi/tvalue"
-conf.rows=20
-conf.wrap="off"
-conf.cfgvalue=function(t,t)
-return e.readfile("/etc/config/daed")or""
-end
-conf.write=function(a,a,t)
-if t then
-t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/daed",t)
-if(luci.sys.call("cmp -s /tmp/daed /etc/config/daed")==1)then
-e.writefile("/etc/config/daed",t)
-luci.sys.call("/etc/init.d/daed restart >/dev/null")
-end
-e.remove("/tmp/daed")
+e.remove("/tmp/mihomo")
 end
 end
 end

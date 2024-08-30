@@ -80,13 +80,13 @@ e.default = 'advancedplus'
 e.rmempty = false
 
 e = t:option(Value, 'gossr', translate('Services Ssrkey settings'))
-e:value('shadowsocksr', translate('SSR'))
-e:value('daed', translate('Daed'))
-e:value('mihomo', translate('MihomoTProxy'))
 e:value('passwall', translate('PassWall'))
+e:value('shadowsocksr', translate('ShadowSocksR'))
 e:value('homeproxy', translate('HomeProxy'))
+e:value('mihomo', translate('MihomoTProxy'))
 e:value('mosdns', translate('MosDns'))
 e:value('lucky', translate('Lucky大吉'))
+e:value('daed', translate('Daed'))
 e.default = 'daed'
 e.rmempty = false
 
