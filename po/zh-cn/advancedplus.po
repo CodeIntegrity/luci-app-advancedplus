@@ -358,8 +358,8 @@ msgstr "默认显示导航栏"
 msgid "Navigation bar proxy"
 msgstr "导航栏代理"
 
-msgid "OpenClash by default"
-msgstr "默认 OpenClash"
+msgid "Daed by default"
+msgstr "默认 Daed"
 
 msgid "The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."
 msgstr "开头的数字符号（＃）或分号的每一行（;）被视为注释；删除（;）启用指定选项。"

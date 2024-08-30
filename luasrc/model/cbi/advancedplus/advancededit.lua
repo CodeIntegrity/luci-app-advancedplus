@@ -382,24 +382,24 @@ end
 end
 end
 
-if nixio.fs.access("/etc/config/openclash")then
-s:tab("openclashconf",translate("openclash"),translate("This page is about configuration")..translate("/etc/config/openclash")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("openclashconf",Value,"openclashconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
+if nixio.fs.access("/etc/config/mihomo")then
+s:tab("mihomoconf",translate("mihomo"),translate("This page is about configuration")..translate("/etc/config/mihomo")..translate("Document content. Automatic restart takes effect after saving the application"))
+conf=s:taboption("mihomoconf",Value,"mihomoconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
 conf.template="cbi/tvalue"
 conf.rows=20
 conf.wrap="off"
 conf.cfgvalue=function(t,t)
-return e.readfile("/etc/config/openclash")or""
+return e.readfile("/etc/config/mihomo")or""
 end
 conf.write=function(a,a,t)
 if t then
 t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/openclash",t)
-if(luci.sys.call("cmp -s /tmp/openclash /etc/config/openclash")==1)then
-e.writefile("/etc/config/openclash",t)
-luci.sys.call("/etc/init.d/openclash restart >/dev/null")
+e.writefile("/tmp/mihomo",t)
+if(luci.sys.call("cmp -s /tmp/mihomo /etc/config/mihomo")==1)then
+e.writefile("/etc/config/mihomo",t)
+luci.sys.call("/etc/init.d/mihomo restart >/dev/null")
 end
-e.remove("/tmp/openclash")
+e.remove("/tmp/mihomo")
 end
 end
 end

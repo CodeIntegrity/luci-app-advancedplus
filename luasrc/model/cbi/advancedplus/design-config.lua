@@ -32,14 +32,14 @@ o.rmempty = false
 o.description = translate('The navigation bar is display by default')
 
 o = s:option(ListValue, 'navbar_proxy', translate('Navigation bar proxy'))
-o:value('openclash', 'openclash')
+o:value('daed', 'daed')
+o:value('mihomo', 'mihomo')
 o:value('shadowsocksr', 'shadowsocksr')
-o:value('vssr', 'vssr')
+o:value('homeproxy', 'homeproxy')
 o:value('passwall', 'passwall')
-o:value('passwall2', 'passwall2')
 o.default = navbar_proxy
 o.rmempty = false
-o.description = translate('OpenClash by default')
+o.description = translate('Daed by default')
 
 o = s:option(Button, 'save', translate('Save Changes'))
 o.inputstyle = 'reload'

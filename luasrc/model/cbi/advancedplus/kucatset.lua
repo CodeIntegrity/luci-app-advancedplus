@@ -64,33 +64,30 @@ e.default = '0'
 
 e = t:option(Value, 'gohome', translate('Status Homekey settings'))
 e:value('overview', translate('Overview'))
-e:value('online', translate('Online User'))
 e:value('realtime', translate('Realtime Graphs'))
-e:value('netdata', translate('NetData'))
 e.default = 'overview'
 e.rmempty = false
 
 e = t:option(Value, 'gouser', translate('System Userkey settings'))
 e:value('advancedplus', translate('Advanced plus'))
-e:value('netwizard', translate('Inital Setup'))
+-- e:value('netwizard', translate('Inital Setup'))
 e:value('system', translate('System'))
 e:value('admin', translate('Administration'))
-e:value('terminal', translate('TTYD Terminal'))
+-- e:value('terminal', translate('TTYD Terminal'))
 e:value('packages', translate('Software'))
-e:value('filetransfer', translate('FileTransfer'))
+-- e:value('filetransfer', translate('FileTransfer'))
 e.default = 'advancedplus'
 e.rmempty = false
 
 e = t:option(Value, 'gossr', translate('Services Ssrkey settings'))
 e:value('shadowsocksr', translate('SSR'))
-e:value('bypass', translate('bypass'))
-e:value('vssr', translate('Hello World'))
-e:value('passwall', translate('passwall'))
-e:value('passwall2', translate('passwall2'))
-e:value('openclash', translate('OpenClash'))
-e:value('chatgpt-web', translate('Chatgpt Web'))
-e:value('ddns-go', translate('DDNS-GO'))
-e.default = 'bypass'
+e:value('daed', translate('Daed'))
+e:value('mihomo', translate('MihomoTProxy'))
+e:value('passwall', translate('PassWall'))
+e:value('homeproxy', translate('HomeProxy'))
+e:value('mosdns', translate('MosDns'))
+e:value('lucky', translate('Lucky大吉'))
+e.default = 'daed'
 e.rmempty = false
 
 e = t:option(Flag, "fontmode", translate("Care mode (large font)"))
