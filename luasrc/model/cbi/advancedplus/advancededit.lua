@@ -338,30 +338,30 @@ end
 end
 end
 
-if nixio.fs.access("/etc/config/mosdns")then
-s:tab("mosdnsconf",translate("MosDNS"),translate("This page is about configuration")..translate("/etc/config/mosdns")..translate("Document content. Automatic restart takes effect after saving the application"))
-conf=s:taboption("mosdnsconf",Value,"mosdnsconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
-conf.template="cbi/tvalue"
-conf.rows=20
-conf.wrap="off"
-conf.cfgvalue=function(t,t)
-return e.readfile("/etc/config/mosdns")or""
-end
-conf.write=function(a,a,t)
-if t then
-t=t:gsub("\r\n?","\n")
-e.writefile("/tmp/mosdns",t)
-if(luci.sys.call("cmp -s /tmp/mosdns /etc/config/mosdns")==1)then
-e.writefile("/etc/config/mosdns",t)
-luci.sys.call("/etc/init.d/mosdns restart >/dev/null")
-end
-e.remove("/tmp/mosdns")
-end
-end
-end
+-- if nixio.fs.access("/etc/config/mosdns")then
+-- s:tab("mosdnsconf",translate("MosDNS"),translate("This page is about configuration")..translate("/etc/config/mosdns")..translate("Document content. Automatic restart takes effect after saving the application"))
+-- conf=s:taboption("mosdnsconf",Value,"mosdnsconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
+-- conf.template="cbi/tvalue"
+-- conf.rows=20
+-- conf.wrap="off"
+-- conf.cfgvalue=function(t,t)
+-- return e.readfile("/etc/config/mosdns")or""
+-- end
+-- conf.write=function(a,a,t)
+-- if t then
+-- t=t:gsub("\r\n?","\n")
+-- e.writefile("/tmp/mosdns",t)
+-- if(luci.sys.call("cmp -s /tmp/mosdns /etc/config/mosdns")==1)then
+-- e.writefile("/etc/config/mosdns",t)
+-- luci.sys.call("/etc/init.d/mosdns restart >/dev/null")
+-- end
+-- e.remove("/tmp/mosdns")
+-- end
+-- end
+-- end
 
 if nixio.fs.access("/etc/config/mihomo")then
-s:tab("mihomoconf",translate("mihomo"),translate("This page is about configuration")..translate("/etc/config/mihomo")..translate("Document content. Automatic restart takes effect after saving the application"))
+s:tab("mihomoconf",translate("Mihomo"),translate("This page is about configuration")..translate("/etc/config/mihomo")..translate("Document content. Automatic restart takes effect after saving the application"))
 conf=s:taboption("mihomoconf",Value,"mihomoconf",nil,translate("The starting number symbol (#) or each line of the semicolon (;) is considered a comment; Remove (;) and enable the specified option."))
 conf.template="cbi/tvalue"
 conf.rows=20
